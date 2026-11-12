@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Smart Karachi - a school project about building a cleaner, greener and smarter city.">
+<title>Smart Karachi | A Better City for Everyone</title>
+<style>
+:root{--navy:#092d35;--green:#087f68;--mint:#dff7ed;--lime:#c9f06b;--ink:#17343a;--muted:#60777b;--paper:#f6faf8;--white:#fff;--line:#e1ece8}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:85px}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--paper);color:var(--ink);line-height:1.65}
+a{color:inherit;text-decoration:none}
+header{position:sticky;top:0;z-index:10;background:rgba(9,45,53,.97);color:white;box-shadow:0 4px 20px #092d3520}
+.nav-wrap{max-width:1150px;margin:auto;padding:14px 22px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{font-weight:900;font-size:1.25rem;letter-spacing:1px}.logo span{color:var(--lime)}
+nav{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+nav a{font-size:.9rem;color:#e8f5f1;font-weight:700}nav a:hover{color:var(--lime)}
+.menu-btn{display:none;background:transparent;color:white;border:1px solid #ffffff55;border-radius:9px;padding:8px 11px;font-size:1rem}
+.hero{background:radial-gradient(circle at 85% 25%,#31b58b66,transparent 30%),linear-gradient(125deg,#092d35,#087f68);color:white;overflow:hidden}
+.hero-inner{max-width:1150px;margin:auto;padding:88px 22px 82px;display:grid;grid-template-columns:1.15fr .85fr;align-items:center;gap:40px}
+.eyebrow{display:inline-block;color:var(--lime);font-weight:800;letter-spacing:2px;text-transform:uppercase;font-size:.78rem;margin-bottom:15px}
+h1{font-size:clamp(2.7rem,6vw,5rem);line-height:1.04;letter-spacing:-2px;margin-bottom:22px}
+.hero p{max-width:610px;color:#e0f2ed;font-size:1.1rem}
+.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.btn{display:inline-block;padding:13px 20px;border-radius:999px;background:var(--lime);color:#17343a;font-weight:800;border:0;cursor:pointer}
+.btn.secondary{background:transparent;color:white;border:1px solid #ffffff88}
+.city-art{min-height:300px;border:1px solid #ffffff33;border-radius:28px;background:linear-gradient(180deg,#b8f1df22,#ffffff0b);display:flex;align-items:center;justify-content:center;padding:22px}
+.city-art svg{width:100%;max-width:420px;height:auto}
+.stats{max-width:1050px;margin:-30px auto 0;padding:0 22px;position:relative;display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.stat{background:white;border:1px solid var(--line);border-radius:17px;padding:22px;text-align:center;box-shadow:0 12px 35px #092d3510}
+.stat strong{display:block;color:var(--green);font-size:1.45rem}.stat span{font-size:.88rem;color:var(--muted)}
+section{padding:76px 22px}.container{max-width:1100px;margin:auto}
+.section-tag{color:var(--green);font-size:.78rem;font-weight:900;letter-spacing:2px;text-transform:uppercase}
+h2{font-size:clamp(2rem,4vw,2.8rem);line-height:1.15;margin:8px 0 16px;color:var(--navy)}
+.lead{max-width:760px;color:var(--muted);font-size:1.05rem}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center;margin-top:30px}
+.about-panel{background:var(--mint);border-radius:24px;padding:30px}
+.about-panel h3{font-size:1.35rem;margin-bottom:10px;color:var(--navy)}
+.check-list{list-style:none;margin-top:15px}.check-list li{padding:8px 0;border-bottom:1px solid #b9e4d4}
+.check-list li:before{content:"✓";font-weight:900;color:var(--green);margin-right:10px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px}
+.card{background:white;border:1px solid var(--line);border-radius:20px;padding:25px;box-shadow:0 10px 28px #092d3508;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-5px);box-shadow:0 16px 35px #092d3515}
+.icon{width:50px;height:50px;border-radius:15px;background:var(--mint);display:grid;place-items:center;font-size:1.55rem;margin-bottom:16px}
+.card h3{color:var(--navy);margin-bottom:8px;font-size:1.16rem}.card p{color:var(--muted);font-size:.95rem}
+.tint{background:#eaf5f0}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
+.step{border-top:4px solid var(--green);background:white;border-radius:0 0 16px 16px;padding:20px}
+.step b{display:block;color:var(--green);font-size:1.5rem;margin-bottom:8px}
+.quote{margin-top:30px;background:var(--navy);color:white;padding:30px;border-radius:22px;font-size:1.25rem;font-weight:700}
+.quote span{display:block;color:var(--lime);font-size:.9rem;font-weight:400;margin-top:10px}
+.contact-box{margin-top:25px;background:white;border:1px solid var(--line);border-radius:22px;padding:28px;max-width:700px}
+.contact-box label{display:block;font-weight:700;margin:12px 0 5px}
+.contact-box input,.contact-box textarea{width:100%;padding:12px;border:1px solid #cbdcd6;border-radius:10px;font:inherit}
+.contact-box textarea{min-height:100px;resize:vertical}
+.note{font-size:.83rem;color:var(--muted);margin-top:10px}
+footer{background:var(--navy);color:#dcece7;padding:28px 22px;text-align:center}
+footer strong{color:var(--lime)}
+.top-link{display:inline-block;margin-top:10px;color:var(--lime);font-weight:700}
+@media(max-width:760px){
+ .hero-inner{grid-template-columns:1fr;padding-top:65px}.city-art{min-height:220px}
+ .cards{grid-template-columns:1fr 1fr}.about-grid{grid-template-columns:1fr}
+ .steps{grid-template-columns:1fr 1fr}
+ nav{display:none;position:absolute;top:61px;left:0;right:0;background:var(--navy);padding:18px 22px;flex-direction:column;align-items:flex-start}
+ nav.open{display:flex}.menu-btn{display:block}
+}
+@media(max-width:500px){.cards,.stats,.steps{grid-template-columns:1fr}.stat{padding:15px}section{padding:58px 18px}.hero-inner{padding-left:18px;padding-right:18px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="nav-wrap">
+  <a class="logo" href="#home">SMART <span>KARACHI</span></a>
+  <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰ Menu</button>
+  <nav id="nav">
+   <a href="#home">Home</a><a href="#about">About</a><a href="#transport">Transport</a><a href="#environment">Environment</a><a href="#technology">Technology</a><a href="#contact">Contact</a>
+  </nav>
+ </div>
+</header>
+<main>
+<section class="hero" id="home">
+ <div class="hero-inner">
+  <div>
+   <span class="eyebrow">Our city • Our future</span>
+   <h1>A smarter Karachi starts with us.</h1>
+   <p>Imagine a city with cleaner streets, greener parks, safer roads and helpful technology. Smart Karachi is a vision for a better future for everyone.</p>
+   <div class="actions"><a class="btn" href="#about">Explore the vision</a><a class="btn secondary" href="#ideas">See our ideas</a></div>
+  </div>
+  <div class="city-art" aria-label="Illustration of a greener modern city">
+   <svg viewBox="0 0 440 300" role="img" aria-label="City skyline with buildings, trees and sun">
+    <circle cx="345" cy="65" r="34" fill="#c9f06b"/>
+    <path d="M0 240 Q100 210 190 240 T440 225 V300 H0Z" fill="#0b6e5d"/>
+    <rect x="35" y="115" width="75" height="135" rx="5" fill="#dff7ed"/>
+    <rect x="125" y="75" width="92" height="175" rx="5" fill="#b6e7d8"/>
+    <rect x="232" y="130" width="65" height="120" rx="5" fill="#dff7ed"/>
+    <rect x="312" y="105" width="82" height="145" rx="5" fill="#b6e7d8"/>
+    <g fill="#087f68"><path d="M50 135h14v18H50zm30 0h14v18H80zm-30 35h14v18H50zm30 0h14v18H80zm-30 35h14v18H50zm30 0h14v18H80z"/><path d="M142 100h16v20h-16zm35 0h16v20h-16zm-35 38h16v20h-16zm35 0h16v20h-16zm-35 38h16v20h-16zm35 0h16v20h-16z"/><path d="M246 150h13v17h-13zm28 0h13v17h-13zm-28 32h13v17h-13zm28 0h13v17h-13z"/><path d="M329 125h15v19h-15zm34 0h15v19h-15zm-34 35h15v19h-15zm34 0h15v19h-15zm-34 35h15v19h-15zm34 0h15v19h-15z"/></g>
+    <g><rect x="15" y="247" width="410" height="8" rx="4" fill="#c9f06b"/><path d="M22 248q-15-30 0-40q15 10 0 40m0-20q-20-18-28-5q8 18 28 5" fill="#c9f06b"/><path d="M410 248q-15-30 0-40q15 10 0 40m0-20q-20-18-28-5q8 18 28 5" fill="#c9f06b"/></g>
+   </svg>
+  </div>
+ </div>
+</section>
+<div class="stats">
+ <div class="stat"><strong>Cleaner</strong><span>Streets and neighbourhoods</span></div>
+ <div class="stat"><strong>Greener</strong><span>Parks and tree planting</span></div>
+ <div class="stat"><strong>Smarter</strong><span>Services and technology</span></div>
+</div>
+<section id="about">
+ <div class="container">
+  <span class="section-tag">01 / About the project</span><h2>What is Smart Karachi?</h2>
+  <p class="lead">Karachi is a busy and important city of Pakistan. Smart Karachi is a student project that shares ideas for improving daily life through planning, community teamwork and modern technology.</p>
+  <div class="about-grid">
+   <div><h3>A city full of potential</h3><p class="lead">A smart city uses resources wisely and makes public services easier to access. Small positive actions by citizens can also make a big difference.</p></div>
+   <div class="about-panel"><h3>Our main goals</h3><ul class="check-list"><li>Improve public transport and road safety</li><li>Keep streets and public places clean</li><li>Protect trees, parks and water</li><li>Use technology to support people</li></ul></div>
+  </div>
+ </div>
+</section>
+<section class="tint" id="transport">
+ <div class="container">
+  <span class="section-tag">02 / Move better</span><h2>Smart transportation</h2>
+  <p class="lead">Good transport helps people reach schools, workplaces, hospitals and other places more easily.</p>
+  <div class="cards">
+   <article class="card"><div class="icon">🚌</div><h3>Better public buses</h3><p>Reliable, comfortable buses can make public transport a useful choice for more people.</p></article>
+   <article class="card"><div class="icon">🚦</div><h3>Smart traffic signals</h3><p>Well-managed traffic signals and clear road signs can help traffic move more smoothly.</p></article>
+   <article class="card"><div class="icon">🚶</div><h3>Safer footpaths</h3><p>Clean footpaths and safe crossings make walking easier for children and families.</p></article>
+  </div>
+ </div>
+</section>
+<section id="environment">
+ <div class="container">
+  <span class="section-tag">03 / Care for nature</span><h2>Clean and green Karachi</h2>
+  <p class="lead">A healthy city needs clean surroundings, responsible waste disposal and green spaces.</p>
+  <div class="cards">
+   <article class="card"><div class="icon">🌳</div><h3>Plant more trees</h3><p>Planting and caring for trees can provide shade and make neighbourhoods greener.</p></article>
+   <article class="card"><div class="icon">♻️</div><h3>Reduce waste</h3><p>Use bins, separate recyclable materials where possible and avoid littering.</p></article>
+   <article class="card"><div class="icon">💧</div><h3>Save water</h3><p>Repair leaks, turn off taps when not needed and use water carefully.</p></article>
+  </div>
+ </div>
+</section>
+<section class="tint" id="technology">
+ <div class="container">
+  <span class="section-tag">04 / Helpful innovation</span><h2>Technology for everyone</h2>
+  <p class="lead">Technology can make information and public services easier to reach. It should be simple, safe and useful for all citizens.</p>
+  <div class="cards">
+   <article class="card"><div class="icon">📱</div><h3>Digital information</h3><p>Online updates can help people find useful public information and services.</p></article>
+   <article class="card"><div class="icon">🏫</div><h3>Smart education</h3><p>Computers, internet access and digital learning tools can support students and teachers.</p></article>
+   <article class="card"><div class="icon">🏥</div><h3>Better healthcare</h3><p>Accessible health information and well-equipped hospitals can support healthier communities.</p></article>
+  </div>
+ </div>
+</section>
+<section id="ideas">
+ <div class="container">
+  <span class="section-tag">05 / Everyone can help</span><h2>How can we make it happen?</h2>
+  <p class="lead">A smarter city is built step by step. Here are four simple actions that can help.</p>
+  <div class="steps">
+   <div class="step"><b>01</b><h3>Keep it clean</h3><p>Put rubbish in bins and never throw waste on roads.</p></div>
+   <div class="step"><b>02</b><h3>Save resources</h3><p>Save electricity and water at home and school.</p></div>
+   <div class="step"><b>03</b><h3>Grow green</h3><p>Look after plants and take part in tree-planting activities.</p></div>
+   <div class="step"><b>04</b><h3>Work together</h3><p>Share helpful ideas and respect public spaces.</p></div>
+  </div>
+  <div class="quote">“A better Karachi is not only a dream. It begins with the choices we make every day.”<span>— Smart Karachi School Project</span></div>
+ </div>
+</section>
+<section class="tint" id="contact">
+ <div class="container">
+  <span class="section-tag">06 / Get involved</span><h2>Be part of a smarter future</h2>
+  <p class="lead">Thank you for visiting this school project. Think of one small idea you can use to make your street, school or neighbourhood better.</p>
+  <div class="contact-box">
+   <h3>Share your idea</h3>
+   <form id="ideaForm">
+    <label for="visitor">Your name</label><input id="visitor" type="text" placeholder="Enter your name" required>
+    <label for="idea">Your idea for Karachi</label><textarea id="idea" placeholder="Write your idea here..." required></textarea>
+    <button class="btn" type="submit" style="margin-top:14px">Submit idea</button>
+   </form>
+   <p class="note">Demo form for this school project. It displays your message on this page; it does not send or store personal information.</p>
+   <p id="formMessage" role="status" style="margin-top:12px;color:#087f68;font-weight:bold"></p>
+  </div>
+ </div>
+</section>
+</main>
+<footer>
+ <p><strong>SMART KARACHI</strong> — Building a better city together.</p>
+ <p>Educational school project • 2026</p>
+ <a class="top-link" href="#home">Back to top ↑</a>
+</footer>
+<script>
+const menuBtn=document.getElementById('menuBtn');
+const nav=document.getElementById('nav');
+menuBtn.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>nav.classList.remove('open')));
+document.getElementById('ideaForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ const name=document.getElementById('visitor').value.trim();
+ const idea=document.getElementById('idea').value.trim();
+ document.getElementById('formMessage').textContent=`Thank you, ${name}! Your idea is: “${idea}”`;
+ this.reset();
+});
+</script>
+</body>
+</html>
